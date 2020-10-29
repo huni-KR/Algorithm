@@ -1,0 +1,15 @@
+else {
+			boolean left = funLeft(minPos, 0, a, min);
+			boolean right = funRight(minPos, a.length, a, min);
+			
+			if( left ) 
+				answer += minPos+1;		
+			else 
+				answer += 2;			
+			
+			if( right )
+				answer += a.length-minPos;
+			else
+				answer += 2;
+			answer--;
+		}	
