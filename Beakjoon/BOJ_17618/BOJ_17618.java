@@ -7,7 +7,6 @@ public class BOJ_17618 {
         Scanner kb = new Scanner(System.in);
         String str = kb.next();
         kb.close();
-
                             
         int n = Integer.parseInt( str );
         int count = 0;
@@ -18,7 +17,6 @@ public class BOJ_17618 {
         }
         
         System.out.println( count );
-
     }
 
     private static int fun(String str) {
