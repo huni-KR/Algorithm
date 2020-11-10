@@ -18,16 +18,17 @@ public class BOJ_14235 {
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         for (int i = 0; i < n; i++) {
-
             StringTokenizer st = new StringTokenizer(br.readLine(), " ");
             int len = Integer.parseInt(st.nextToken());
             if (len > 0) {
-                for (int j = 0; j < len; j++)
+                for (int j = 0; j < len; j++) {
                     pq.add(Integer.parseInt(st.nextToken()));
-            } else if (pq.isEmpty())
+                }
+            } else if (pq.isEmpty()) {
                 bw.write(Integer.toString(-1) + "\n");
-            else if (!pq.isEmpty())
+            } else if (!pq.isEmpty()) {
                 bw.write(Integer.toString(pq.poll()) + "\n");
+            }
         }
 
         bw.flush();
