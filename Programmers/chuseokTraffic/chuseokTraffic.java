@@ -1,6 +1,6 @@
-package chuseok_fraffic;
+package chuseokTraffic;
 
-public class chuseok_fraffic {
+public class chuseokTraffic {
 
     public static void main(String[] args) {
 
