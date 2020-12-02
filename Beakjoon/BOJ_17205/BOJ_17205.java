@@ -27,9 +27,3 @@ public class BOJ_17205 {
         System.out.println(result - 1);
     }
 }
-
-/*
- * 
- * 12356632 11881376
- * 
- */
