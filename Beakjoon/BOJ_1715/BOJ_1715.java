@@ -23,6 +23,9 @@ public class BOJ_1715 {
             pq.add(tmp);
         }
 
-        System.out.println(result);
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        bw.write(Integer.toString(result));
+        bw.flush();
+        bw.close();
     }
 }
