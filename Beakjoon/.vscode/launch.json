@@ -6,13 +6,6 @@
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - BOJ_11053",
-            "request": "launch",
-            "mainClass": "BOJ_11053.BOJ_11053",
-            "projectName": "Beakjoon_837fe745"
-        },
-        {
-            "type": "java",
             "name": "Debugging Java",
             "request": "launch",
             "cwd": "${workspaceFolder}",
