@@ -1,0 +1,38 @@
+List DFS
+
+List<Integer>[] list = new ArrayList[nV+1];
+public static void DFS(int start) {
+	visit[start] = true;
+	dfs += Integer.toString( start ) + " ";
+	for(int i=0; i<list[start].size(); i++) {
+		if( !visit[list[start].get(i)] ) {
+			DFS(list[start].get(i));
+		}
+	}			
+}
+
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+2D Array DFS
+
+static int[][] grid;
+static boolean[][] visit;
+static int[] dx = { 0, 1, 0, -1 };
+static int[] dy = { 1, 0, -1, 0 };
+
+static void dfs(int x, int y) {
+    visit[x][y] = true;
+
+    for (int d = 0; d < 4; d++) {
+        int nx = x + dx[d];
+        int ny = y + dy[d];
+
+        if (nx >= 0 && nx < N && ny >= 0 && ny < N && !visit[nx][ny]) {
+            if (grid[x][y] == grid[nx][ny]) {
+                
+                dfs(nx, ny);
+            } 
+        }
+    }
+}
