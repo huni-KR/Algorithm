@@ -1,6 +1,6 @@
+package Lv1;
 
-
-public class calculator {
+public class calculateInsufficientMoney {
     public static void main(String[] args) {
         int price = 3;
         int money = 20;

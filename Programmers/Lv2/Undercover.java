@@ -1,8 +1,9 @@
+package Lv2;
 
 
 import java.util.*;
 
-public class undercover {
+public class Undercover {
 
     public static void main(String[] args) {
         String[][] clothes = { { "yellowhat", "headgear" }, { "bluesunglasses", "eyewear" },

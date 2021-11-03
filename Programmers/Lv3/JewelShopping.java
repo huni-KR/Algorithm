@@ -1,18 +1,13 @@
-
+package Lv3;
 
 import java.util.*;
 
-public class shopping {
+public class JewelShopping {
 
     public static void main(String[] args) {
         Solution s = new Solution();
 
-        // String[] gems = { "DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE",
-        // "DIA" };
-        // String[] gems = { "AA", "AB", "AC", "AA", "AC" };
-        // String[] gems = { "XYZ", "XYZ", "XYZ" };
-        // String[] gems = { "ZZZ", "YYY", "NNNN", "YYY", "BBB" };
-        String[] gems = { "aa", "aa", "bb" };
+        String[] gems = { "DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE", "DIA" };
         s.solution(gems);
     }
 

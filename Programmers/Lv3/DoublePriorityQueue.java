@@ -1,6 +1,8 @@
+package Lv3;
+
 import java.util.*;
 
-public class doublePriorityQueue {
+public class DoublePriorityQueue {
     public static void main(String[] args) {
 
         String[] operations = { "I 7", "I 5", "I -5", "D -1" };
@@ -36,7 +38,6 @@ public class doublePriorityQueue {
                 }
             }
 
-            int[] answer = new int[2];
             if (orderQueue.size() == 0) {
                 return new int[] { 0, 0 };
             }

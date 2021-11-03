@@ -1,8 +1,8 @@
-
+package Lv2;
 
 import java.util.*;
 
-public class vowelDictionary {
+public class VowelDictionary {
 
     public static void main(String[] args) {
         String[] words = { "AAAAE", "AAAE", "I", "EIO", "UUUUU" };
@@ -60,5 +60,4 @@ public class vowelDictionary {
             return result.toArray(new String[result.size()]);
         }
     }
-
 }

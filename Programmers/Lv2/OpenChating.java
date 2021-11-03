@@ -1,3 +1,5 @@
+package Lv2;
+
 import java.util.*;
 
 class User {
@@ -10,7 +12,7 @@ class User {
     }
 }
 
-public class openChatingRoom {
+public class OpenChating {
 
     public static void mian(String[] args) {
 
