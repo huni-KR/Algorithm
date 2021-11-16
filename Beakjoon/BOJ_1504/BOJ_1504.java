@@ -3,93 +3,92 @@ package BOJ_1504;
 import java.io.*;
 import java.util.*;
 
-class Data implements Comparable<Data> {
-    int end;
-    int weight;
-
-    Data(int e, int w) {
-        this.end = e;
-        this.weight = w;
-    }
-
-    @Override
-    public int compareTo(Data o) {
-        return this.weight - o.weight;
-    }
-}
-
 public class BOJ_1504 {
 
-    static ArrayList<Data>[] list;
-    static boolean[] visit;
-    static int[] arr;
+    static class Node implements Comparable<Node> {
+        int e;
+        int w;
 
-    public static void main(String[] args) throws IOException {
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-        int nV = Integer.parseInt(st.nextToken());
-        int nE = Integer.parseInt(st.nextToken());
-
-        visit = new boolean[nV + 1];
-        arr = new int[nV + 1];
-        list = new ArrayList[nV + 1];
-        for (int i = 1; i < list.length; i++) {
-            list[i] = new ArrayList<>();
+        Node(int e, int w) {
+            this.e = e;
+            this.w = w;
         }
 
-        for (int i = 0; i < nE; i++) {
-            st = new StringTokenizer(br.readLine(), " ");
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
-            int w = Integer.parseInt(st.nextToken());
-            list[a].add(new Data(b, w));
-            list[b].add(new Data(a, w));
-        }
-
-        st = new StringTokenizer(br.readLine(), " ");
-        int v1 = Integer.parseInt(st.nextToken());
-        int v2 = Integer.parseInt(st.nextToken());
-
-        long result1 = dijkstra(1, v1) + dijkstra(v1, v2) + dijkstra(v2, nV);
-        long result2 = dijkstra(1, v2) + dijkstra(v2, v1) + dijkstra(v1, nV);
-
-        if (result1 < result2 && result1 < Integer.MAX_VALUE) {
-            System.out.println(result1);
-        } else if (result1 > result2 && result2 < Integer.MAX_VALUE) {
-            System.out.println(result2);
-        } else {
-            System.out.println(-1);
+        @Override
+        public int compareTo(Node n) {
+            return (int) (this.w - n.w);
         }
     }
 
-    private static long dijkstra(int start, int end) {
-        PriorityQueue<Data> pq = new PriorityQueue<>();
-        pq.add(new Data(start, 0));
+    static ArrayList<ArrayList<Node>> list;
+    static int[] dist;
+    static boolean[] check;
+    static final int MAX = 200000000;
 
-        Arrays.fill(arr, Integer.MAX_VALUE);
-        Arrays.fill(visit, false);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        int N = Integer.parseInt(st.nextToken());
+        int E = Integer.parseInt(st.nextToken());
+        list = new ArrayList<>();
+        dist = new int[N + 1];
+        check = new boolean[N + 1];
 
-        arr[start] = 0;
+        for (int i = 0; i <= N; i++) {
+            list.add(new ArrayList<>());
+        }
+
+        for (int i = 0; i < E; i++) {
+            st = new StringTokenizer(br.readLine(), " ");
+            int s = Integer.parseInt(st.nextToken());
+            int e = Integer.parseInt(st.nextToken());
+            int w = Integer.parseInt(st.nextToken());
+
+            list.get(s).add(new Node(e, w));
+            list.get(e).add(new Node(s, w));
+        }
+
+        int[] must = new int[2];
+        st = new StringTokenizer(br.readLine(), " ");
+        must[0] = Integer.parseInt(st.nextToken());
+        must[1] = Integer.parseInt(st.nextToken());
+
+        int[] result = new int[2];
+        result[0] += dijkstra(1, must[0]);
+        result[0] += dijkstra(must[0], must[1]);
+        result[0] += dijkstra(must[1], N);
+
+        result[1] += dijkstra(1, must[1]);
+        result[1] += dijkstra(must[1], must[0]);
+        result[1] += dijkstra(must[0], N);
+
+        int answer = (result[0] >= MAX && result[1] >= MAX) ? -1 : Math.min(result[0], result[1]);
+
+        System.out.println(answer);
+    }
+
+    private static int dijkstra(int start, int end) {
+        PriorityQueue<Node> pq = new PriorityQueue<>();
+        pq.offer(new Node(start, 0));
+
+        Arrays.fill(dist, MAX);
+        Arrays.fill(check, false);
+        dist[start] = 0;
 
         while (!pq.isEmpty()) {
-            int now = pq.poll().end;
+            Node node = pq.poll();
+            int now = node.e;
+            if (!check[now]) {
+                check[now] = true;
 
-            if (visit[now])
-                continue;
-            visit[now] = true;
-
-            for (int i = 0; i < list[now].size(); i++) {
-                int next = list[now].get(i).end;
-                int weight = list[now].get(i).weight;
-
-                if (arr[next] > arr[now] + weight) {
-                    arr[next] = Math.min(arr[next], arr[now] + weight);
-                    pq.add(new Data(next, arr[next]));
+                for (Node n : list.get(now)) {
+                    if (!check[n.e] && dist[now] + n.w < dist[n.e]) {
+                        dist[n.e] = dist[now] + n.w;
+                        pq.offer(new Node(n.e, dist[n.e]));
+                    }
                 }
             }
         }
-        return arr[end];
+        return dist[end];
     }
 }
