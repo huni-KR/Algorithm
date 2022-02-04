@@ -10,10 +10,6 @@ import java.util.StringTokenizer;
 
 public class SW1208 {
 
-    static int pos;
-    static int[] dx = { 1, 0, -1, 0 };
-    static int[] dy = { 0, 1, 0, -1 };
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
