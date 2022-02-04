@@ -3,17 +3,35 @@ package BOJ_15686;
 import java.io.*;
 import java.util.*;
 
-class Pos {
-    int x;
-    int y;
-
-    Pos(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-}
-
 public class BOJ_15686 {
+
+    static class Pos {
+        int x;
+        int y;
+
+        Pos(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    static class Data {
+        int index;
+        int dist;
+
+        Data(int index, int dist) {
+            this.index = index;
+            this.dist = dist;
+        }
+
+        public int getDist() {
+            return dist;
+        }
+
+        public int getIndex() {
+            return index;
+        }
+    }
 
     public static void main(String[] args) throws IOException {
 
@@ -37,11 +55,6 @@ public class BOJ_15686 {
                 }
             }
         }
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-            }
-        }
-
+        
     }
 }
