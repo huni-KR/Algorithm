@@ -1,4 +1,4 @@
-package BOJ_10974;
+package BOJ_15649;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,10 +7,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class BOJ_10974 {
+public class BOJ_15649 {
     static BufferedReader br;
     static BufferedWriter bw;
-    static int n;
+    static int n, m;
     static int[] arr;
     static int[] result;
     static boolean[] visit;
@@ -18,9 +18,11 @@ public class BOJ_10974 {
     public static void main(String[] args) throws IOException {
         br = new BufferedReader(new InputStreamReader(System.in));
         bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        n = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
         arr = new int[n];
-        result = new int[n];
+        result = new int[m];
         visit = new boolean[n];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = i + 1;
@@ -31,7 +33,7 @@ public class BOJ_10974 {
     }
 
     private static void fun(int cnt) throws IOException {
-        if (n == cnt) {
+        if (m == cnt) {
             for (int i = 0; i < result.length; i++) {
                 bw.write(Integer.toString(result[i]));
                 bw.write(" ");
