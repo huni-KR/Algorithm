@@ -15,24 +15,6 @@ public class BOJ_15686 {
         }
     }
 
-    static class Data {
-        int index;
-        int dist;
-
-        Data(int index, int dist) {
-            this.index = index;
-            this.dist = dist;
-        }
-
-        public int getDist() {
-            return dist;
-        }
-
-        public int getIndex() {
-            return index;
-        }
-    }
-
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
