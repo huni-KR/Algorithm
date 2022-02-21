@@ -11,7 +11,7 @@ public class BOJ_9370 {
     static BufferedReader br;
     static BufferedWriter bw;
     static StringTokenizer st;
-    static int N, M, T, S, G, H;
+    static int X, Y;
 
     public static void main(String[] args) throws IOException {
         br = new BufferedReader(new InputStreamReader(System.in));
@@ -19,22 +19,27 @@ public class BOJ_9370 {
         int C = Integer.parseInt(br.readLine());
         for (int c = 0; c < C; c++) {
             st = new StringTokenizer(br.readLine(), " ");
-            N = Integer.parseInt(br.readLine());
-            M = Integer.parseInt(br.readLine());
-            T = Integer.parseInt(br.readLine());
+            X = Integer.parseInt(st.nextToken());
+            Y = Integer.parseInt(st.nextToken());
 
-            st = new StringTokenizer(br.readLine(), " ");
-            S = Integer.parseInt(br.readLine());
-            G = Integer.parseInt(br.readLine());
-            H = Integer.parseInt(br.readLine());
-
-            for (int i = 0; i < M; i++) {
-                st = new StringTokenizer(br.readLine(), " ");
-                int s = Integer.parseInt(br.readLine());
-                int e = Integer.parseInt(br.readLine());
-                int w = Integer.parseInt(br.readLine());
-                
+            if (X > Y) {
+                int tmp = X;
+                tmp = Y;
+                Y = tmp;
             }
+
+            double max = 0;
+            double pos = 0;
+            for (double h = X / 6.0; h < X / 2.0; h += 0.0001) {
+                if (max < h * (X - 2 * h) * (Y - 2 * h)) {
+                    max = h * (X - 2 * h) * (Y - 2 * h);
+                    pos = h;
+                }
+            }
+            System.out.println(pos);
+
+            System.out.printf("#%d %.6f\n", c + 1, max);
+
         }
 
     }
